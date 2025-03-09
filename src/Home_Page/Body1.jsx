@@ -11,8 +11,8 @@ export default function Body1()
                 <div className="px-4 sm:px-10">
                     <div className="mt-16 max-w-4xl mx-auto text-center relative z-10">
 
-                        <h1 className="md:text-5xl text-4xl font-semibold mb-6 md:!leading-[80px] border-b-2 ">
-                        <span className="text-cyan-900 md:text-7xl">LaundryHub </span> <br />Streamlined Laundry Management for Owners & Customers
+                        <h1 className="md:text-5xl text-2xl font-semibold mb-5 pb-2 md:!leading-[80px] leading-[45px]  border-b-2 ">
+                        <span className="text-cyan-900 md:text-7xl text-5xl">LaundryHub </span> <br />Streamlined Laundry Management for Owners & Customers
                         </h1>
 
                         <p className="text-base ">
