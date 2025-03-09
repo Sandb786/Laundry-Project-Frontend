@@ -10,13 +10,16 @@ export default function Body1()
             <div className="relative">
                 <div className="px-4 sm:px-10">
                     <div className="mt-16 max-w-4xl mx-auto text-center relative z-10">
-                        <h1 className="md:text-6xl text-4xl font-semibold mb-6 md:!leading-[75px]">
-                            Online Laundry Management for Owners & Customers
+
+                        <h1 className="md:text-5xl text-4xl font-semibold mb-6 md:!leading-[80px] border-b-2 ">
+                        <span className="text-cyan-900 md:text-7xl">LaundryHub </span> <br />Streamlined Laundry Management for Owners & Customers
                         </h1>
-                        <p className="text-base">
+
+                        <p className="text-base ">
                             We provide an online solution for laundry owners to manage their customers easily. 
                             Customers can book laundry services online, and owners can track and manage orders with ease.
                         </p>
+
                         <div className="mt-10">
                             <button 
                                 onClick={() => navigate("/register")}  // ✅ Navigates to /register
