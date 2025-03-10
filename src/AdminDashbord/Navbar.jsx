@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Menu, X, User, Home, Settings, LogOut } from "lucide-react";
-import { Typography } from "@material-tailwind/react";
+import { Menu, X, User, Home, Settings, LogOut, Newspaper } from "lucide-react";
+import { Button, Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import FackOrder from "./FackOrder";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +43,9 @@ const Navbar = () => {
           </Link>
           <a href="#" className=" px-6 py-4 hover:text-gray-400 flex items-center">
             <Settings className="mr-2" size={18} /> Settings
-          </a>
+          </a>  
         </div>
+
 
         {/* Profile Dropdown */}
         <div className="relative">
