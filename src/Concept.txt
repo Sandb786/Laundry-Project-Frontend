@@ -1,0 +1,67 @@
+* How to Auto-Generate Order Day in JavaScript
+    
+1️⃣ Splitting the Date String
+    const [day, month, year] = orderDate.split("-").map(Number);
+
+    👉 How this works:
+
+       "10-03-2025" is split into an array → ["10", "03", "2025"]
+
+       .map(Number) converts each string into a number → [10, 3, 2025]
+
+       The values are destructured into:
+       day = 10
+       month = 3
+       year = 2025
+
+2️⃣ Creating a JavaScript Date Object
+        const date = new Date(year, month - 1, day);
+
+        👉 How this works:
+
+        JavaScript Date object format: new Date(year, month (0-based), day)
+        
+        Why month - 1?
+
+        JavaScript months start from 0 (January = 0, February = 1, March = 2, etc.)
+
+        Since our month is 3 (March), we subtract 1 → new Date(2025, 2, 10)
+
+        Final Date Object:
+        Tue Mar 10 2025 00:00:00 GMT+0000 (UTC)
+
+3️⃣ Getting the Day Name
+        return date.toLocaleDateString("en-US", { weekday: "long" });
+
+        👉 How this works:
+
+        toLocaleDateString("en-US", { weekday: "long" }) extracts only the day name:
+
+        "long" → Returns full name (e.g., "Monday", "Tuesday", etc.)
+
+        "short" → Would return "Mon", "Tue", etc.
+
+
+🔥 Summary:
+    ✅ Splits the input dd-mm-yyyy into day, month, year
+    ✅ Creates a valid JavaScript Date object
+    ✅ Extracts and returns the day name
+
+👉Final Code:
+
+    function getOrderDay(orderDate) {
+      const [day, month, year] = orderDate.split("-").map(Number);
+      const date = new Date(year, month - 1, day); // Convert "dd-mm-yyyy" to Date object
+      return date.toLocaleDateString("en-US", { weekday: "long" }); // Get day name (e.g., "Monday")
+    }
+    // Example Usage:
+    console.log(getOrderDay("10-03-2025")); // Output: "Monday"
+    console.log(getOrderDay("09-03-2025")); // Output: "Sunday"
+
+
+
+
+
+
+
+

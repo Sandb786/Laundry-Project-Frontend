@@ -1,10 +1,11 @@
-import { Button } from "@material-tailwind/react";
-import "./style.css";
-import { CheckCheck, CircleX, Ellipsis } from "lucide-react";
-import NewOrder from "./NewOrder";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { Button } from "@material-tailwind/react";
+import OrderDetailsModal from "./OrderDetailsModal ";
 
 const PendingOrdersTable = () => {
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
   const orders = [
     { id: 1, customer: "Rajesh Sharma", orderType: "Wash & Fold", date: "10-03-2025", status: "Pending", orderDay: "Monday", deadline: "3 days left" },
     { id: 2, customer: "Priya Verma", orderType: "Dry Cleaning", date: "09-03-2025", status: "Pending", orderDay: "Sunday", deadline: "2 days left" },
@@ -19,71 +20,53 @@ const PendingOrdersTable = () => {
   ];
 
   return (
-    <div className="p-4 overflow-x-auto  max-w-full shadow-lg">
-
-      {/* Scrollable Table Container */}
+    <div className="p-4 overflow-x-auto max-w-full shadow-lg">
       <div className="max-h-85 overflow-auto rounded-lg pr-2 scrol">
-
-        <table className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden ">
-
-          {/* Sticky Header */}
-          <thead className="bg-gray-800 text-white sticky top-0 z-10  ">
+        <table className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
+          {/* Table Header */}
+          <thead className="bg-gray-800 text-white sticky top-0 z-10">
             <tr>
-
               <th className="py-3 px-6 text-left">Customer</th>
               <th className="py-3 px-6 text-left">Order Type</th>
               <th className="py-3 px-6 text-left">Date</th>
-              <th className="py-3 px-6 text-left">Status</th>
               <th className="py-3 px-6 text-left">Order Day</th>
+              <th className="py-3 px-6 text-left">Status</th>
               <th className="py-3 px-6 text-left">Deadline</th>
               <th className="py-3 px-6 text-left">Action</th>
-
             </tr>
           </thead>
 
+          {/* Table Body */}
           <tbody>
             {orders.map((order) => (
               <tr key={order.id} className="border-b border-gray-300 hover:bg-gray-100">
-
-                {/* Customer Name */}
                 <td className="py-3 px-6">{order.customer}</td>
-
-                {/* Order Type */}
                 <td className="py-3 px-6">{order.orderType}</td>
-
-                {/* Order Date */}
                 <td className="py-3 px-6">{order.date}</td>
-
-                {/* Order Status */}
-                <td className="py-3 px-6 text-yellow-500 font-bold">{order.status}</td>
-
-                {/* Order Day (e.g., Monday, Tuesday) */}
                 <td className="py-3 px-6 font-semibold">{order.orderDay}</td>
-
-                {/* Deadline (e.g., 3 days left, 2 days left, Late) */}
+                <td className="py-3 px-6 text-yellow-500 font-bold">{order.status}</td>
                 <td className={`py-3 px-6 font-semibold ${order.deadline === "Late" ? "text-red-500" : "text-green-500"}`}>
                   {order.deadline}
                 </td>
-
-                {/* Action Button */}
                 <td className="py-3 px-6 flex items-center gap-2">
                   <motion.button
                     whileTap={{ scale: 0.9 }}
                     transition={{ type: "spring", stiffness: 300 }}
+                    onClick={() => setSelectedOrder(order)}
                   >
-                    <Button variant="outlined" size="sm" color="blue" className="py-3 px-4 ">
+                    <Button variant="outlined" size="sm" color="blue" className="py-3 px-4">
                       More...
                     </Button>
                   </motion.button>
                 </td>
-
               </tr>
             ))}
-
           </tbody>
         </table>
       </div>
 
+      {/* Order Details Modal */}
+      {selectedOrder && <OrderDetailsModal order={selectedOrder} onClose={() => setSelectedOrder(null)} />}
     </div>
   );
 };
