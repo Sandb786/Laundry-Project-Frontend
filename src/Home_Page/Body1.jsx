@@ -1,6 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+
+  
+ 
+  
 export default function Body1() 
 {
     const navigate = useNavigate();  // ✅ Get the navigate function
